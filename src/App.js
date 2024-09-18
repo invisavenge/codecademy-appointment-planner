@@ -9,25 +9,13 @@ const App = () => {
     Define state variables for 
     contacts and appointments 
   */
-  const [appointments, setAppointments] = useState([]);
   const [contacts, setContacts] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
   /*
     Implement functions to add data to
     contacts and appointments
   */
-  const addAppointment = appointment => {
-    const { name, contact, date, time } = appointment;
-
-    if (!name || !contact || !date || !time) {
-      return;
-    }
-
-    setAppointments(prevAppointmentsArray => {
-      return [...prevAppointmentsArray, appointment];
-    });
-  };
-
   const addContact = contact => {
     const { name, phoneNumber, email } = contact;
 
@@ -40,6 +28,18 @@ const App = () => {
     });
   };
 
+  const addAppointment = appointment => {
+    const { name, contact, date, time } = appointment;
+
+    if (!name || !contact || !date || !time) {
+      return;
+    }
+
+    setAppointments(prevAppointmentsArray => {
+      return [...prevAppointmentsArray, appointment];
+    });
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={ <Root /> }>
@@ -49,13 +49,13 @@ const App = () => {
         />
 
         <Route
-          path={ROUTES.APPOINTMENTS}
-          element={ <AppointmentsPage appointments={appointments} addAppointment={addAppointment} /> }
+          path={ROUTES.CONTACTS}
+          element={ <ContactsPage contacts={contacts} addContact={addContact} /> }
         />
 
         <Route
-          path={ROUTES.CONTACTS}
-          element={ <ContactsPage contacts={contacts} addContact={addContact} /> }
+          path={ROUTES.APPOINTMENTS}
+          element={ <AppointmentsPage appointments={appointments} addAppointment={addAppointment} /> }
         />
       </Route>
     )
