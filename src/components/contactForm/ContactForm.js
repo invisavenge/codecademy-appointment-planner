@@ -10,7 +10,42 @@ export const ContactForm = ({
   handleSubmit
 }) => {
   return (
-    <></>
+    <>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name:
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </label>
+
+        <label htmlFor="phone">Phone:
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+          pattern="[1-9][0-9]{2}-[1-9][0-9]{2}-[0-9]{4}"
+        />
+        </label>
+
+        <label htmlFor="email">Email:
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        </label>
+
+        <button type="submit">Submit</button>
+      </form> 
+    </>
   );
 };
 
