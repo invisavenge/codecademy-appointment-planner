@@ -29,7 +29,6 @@ export const ContactForm = ({
           name="phone"
           value={phone}
           onChange={(event) => setPhone(event.target.value)}
-          pattern="[1-9][0-9]{2}-[1-9][0-9]{2}-[0-9]{4}"
         />
         </label>
 
